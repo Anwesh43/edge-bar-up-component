@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import EdgeBarUp from './EdgeBarUp'
+import {
+    useAnimatedScale, 
+    useDimension
+} from './hooks'
 
 function App() {
+  const { scale, start} = useAnimatedScale(0.02, 20)
+  const {w, h} = useDimension()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <button onClick = {start}>start</button>
+        <EdgeBarUp scale = {scale} w = {w} h = {h}/>
     </div>
   );
 }

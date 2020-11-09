@@ -19,9 +19,9 @@ export const useAnimatedScale = (scGap = 0.02, delay = 20) => {
                 setAnimated(true)
                 let currScale = scale 
                 const interval = setInterval(() => {
-                    scale += (scGap / parts) 
-                    setScale(scale)
-                    if (scale > 1) {  
+                    currScale += (scGap / parts) 
+                    setScale(currScale)
+                    if (currScale > 1) {  
                         setScale(0)
                         setAnimated(false)
                         clearInterval(interval)
@@ -46,6 +46,10 @@ export const useDimension = () => {
             }
         }
     })
+    return {
+        w, 
+        h
+    }
 }
 
 export const useStyle = (w, h, scale) => {
@@ -58,6 +62,8 @@ export const useStyle = (w, h, scale) => {
         barStyle(i) {
             const top = `${h - hSize * divideScale(sf, i, parts)}px`
             const left = `${i * (w - barW)}px`
+            const width = `${barW}px`
+            const height = `${hSize * divideScale(sf, i, parts)}px`
             return {
                 position,
                 width, 
